@@ -53,6 +53,10 @@ const Shop = () => {
         setCart(newCart);
         setItem(selectedProduct.id);
     };
+    const handleClearBtn = () => {
+        localStorage.removeItem('shopping-cart');
+        setCart([]);
+    };
 
     return (
         <div className="container grid  grid-cols-[4fr_1fr]  gap-5">
@@ -62,7 +66,7 @@ const Shop = () => {
                 ))}
             </div>
             <div className="min-h-screen bg-orange-300 ">
-                <Cart cart={cart} />
+                <Cart cart={cart} handleClearBtn={handleClearBtn} />
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 import React from 'react';
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, handleClearBtn }) => {
     let total = 0;
     let shipping = 0;
     let quantity = 0;
@@ -22,6 +22,11 @@ const Cart = ({ cart }) => {
             <p className="my-5 text-center text-sm font-bold">
                 Grand Total: {total + shipping + tax}
             </p>
+            <div className="flex justify-center">
+                <button className="button " onClick={handleClearBtn} type="button">
+                    clear cart
+                </button>
+            </div>
         </div>
     );
 };
