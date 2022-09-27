@@ -1,13 +1,14 @@
 /* eslint-disable no-param-reassign */
+
 import React, { useEffect, useState } from 'react';
 import { getStoredItem, setItem } from '../fakeDb/fakeDb';
 import Cart from './Cart';
 
-import ProductCard from './productCard';
+import ProductCard from './productCard'; // You can also use <link> for styles
+// ..
 
-const Shop = () => {
+const Shop = ({ cart, setCart }) => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         const storedCart = getStoredItem('shopping-cart');
@@ -22,20 +23,22 @@ const Shop = () => {
                 addedProducts.quantity = quantity;
             }
 
-            console.log(savedCart);
-
             setCart(savedCart);
         });
-    }, [products]);
+    }, [products, setCart]);
 
     useEffect(() => {
-        const loadData = async () => {
-            const response = await fetch('products.json');
-            const displayData = await response.json();
+        try {
+            const loadData = async () => {
+                const response = await fetch('products.json');
+                const displayData = await response.json();
 
-            setProducts(displayData);
-        };
-        loadData();
+                setProducts(displayData);
+            };
+            loadData();
+        } catch (error) {
+            console.log(error);
+        }
     }, []);
     const clickHandler = (selectedProduct) => {
         let newCart = [];

@@ -6,7 +6,7 @@ import NotAvailable from '../Image_not_available.png';
 const productCard = ({ product, clickHandler }) => {
     const { img, name, price, ratings } = product;
     return (
-        <div>
+        <div data-aos="fade-up">
             <div className="card h-full w-full bg-base-100 shadow-xl">
                 <figure>
                     <img
