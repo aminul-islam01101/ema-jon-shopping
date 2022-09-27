@@ -26,7 +26,7 @@ const productCard = ({ product, clickHandler }) => {
                     <button
                         onClick={() => clickHandler(product)}
                         type="button"
-                        className="button mt-auto bg-orange-500"
+                        className="button mt-auto bg-orange-500 hover:bg-orange-600"
                     >
                         Add to cart <FontAwesomeIcon icon={faCartShopping} />
                     </button>

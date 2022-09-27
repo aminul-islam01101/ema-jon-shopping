@@ -1,7 +1,23 @@
-const getItem = (key) => {
-    const getData = JSON.parse(localStorage.getItem(key));
-    return getData;
+const getStoredItem = (key) => JSON.parse(localStorage.getItem(key)) || {};
+// to store an object
+
+const setItem = (id) => {
+    const shoppingCart = getStoredItem('shopping-cart');
+    const quantity = shoppingCart[id];
+
+    shoppingCart[id] = quantity ? quantity + 1 : 1;
+
+    localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
 };
+export { setItem, getStoredItem };
+
+// const getStoredItem = (key) => {
+//     let shoppingCart = {};
+//     const storedCart = JSON.parse(localStorage.getItem(key));
+//     shoppingCart = storedCart || {};
+
+//     return shoppingCart;
+// };
 // const setItem = (id) => {
 //     let productsCart = {};
 //     const storedCart = getItem('shopping-cart');
@@ -33,28 +49,3 @@ const getItem = (key) => {
 //     }
 // };
 // export default setItem;
-
-// for store an object
-
-const setItem = (id) => {
-    let shoppingCart = {};
-    const storedCart = getItem('shopping-cart');
-
-    if (storedCart) {
-        shoppingCart = storedCart;
-    }
-
-    const quantity = shoppingCart[id];
-
-    if (quantity) {
-        const newQuantity = quantity + 1;
-        shoppingCart[id] = newQuantity;
-    } else {
-        console.log('new');
-        shoppingCart[id] = 1;
-    }
-
-    localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
-    console.log(id);
-};
-export default setItem;
