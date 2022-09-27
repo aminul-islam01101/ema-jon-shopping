@@ -22,13 +22,15 @@ const Shop = () => {
     };
 
     return (
-        <div className="container grid grid-cols-[4fr_1fr] gap-5 ">
+        <div className="container grid  grid-cols-[4fr_1fr]  gap-5">
             <div className="mt-20 grid grid-cols-2 gap-5 lg:grid-cols-3">
                 {data.map((objItem) => (
                     <ProductCard key={objItem.id} product={objItem} clickHandler={clickHandler} />
                 ))}
             </div>
-            <Cart cart={cart} />
+            <div className="min-h-screen bg-orange-300 ">
+                <Cart cart={cart} />
+            </div>
         </div>
     );
 };
